@@ -523,6 +523,7 @@ public class fpegawai extends javax.swing.JFrame {
 
         // Mengisi form dengan data dari tabel
         fusename.setText(username);
+        fusename.setEnabled(false);
         fpassword.setText(password);
         fchangepassword.setText(password);
         if (jenisKelamin.equals("Laki-laki")) {

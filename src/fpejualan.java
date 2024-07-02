@@ -224,6 +224,11 @@ public class fpejualan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
 
         pilihbarang.addActionListener(new java.awt.event.ActionListener() {
@@ -629,6 +634,10 @@ public class fpejualan extends javax.swing.JFrame {
         fm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
