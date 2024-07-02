@@ -512,7 +512,7 @@ public class fpegawai extends javax.swing.JFrame {
         if (i == -1) {
             return;
         }
-        // Mengambil data dari baris yang dipilih
+       
         String username = (String) table.getValueAt(i, 0);
         String password = (String) table.getValueAt(i, 1);
         String jenisKelamin = (String) table.getValueAt(i, 2);
@@ -521,7 +521,7 @@ public class fpegawai extends javax.swing.JFrame {
         String agama = (String) table.getValueAt(i, 5);
         String alamat = (String) table.getValueAt(i, 6);
 
-        // Mengisi form dengan data dari tabel
+       
         fusename.setText(username);
         fusename.setEnabled(false);
         fpassword.setText(password);
@@ -552,7 +552,7 @@ public class fpegawai extends javax.swing.JFrame {
         fusename.setText("");
         femail.setText("");
         fpassword.setText("");
-        fchangepassword.setText("");
+        fchangepassword.setText("");    
         genderGroup.clearSelection();
         fnotelphon.setText("");
         cagama.setSelectedIndex(0);
