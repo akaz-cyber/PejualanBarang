@@ -489,7 +489,9 @@ System.out.println("Terjadi Error");
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+         fmenu fm = new fmenu();
+        fm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tableinputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableinputMouseClicked

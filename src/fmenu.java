@@ -113,7 +113,9 @@ public class fmenu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-      
+        fpegawai fp = new fpegawai();
+        fp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -125,14 +127,23 @@ public class fmenu extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        fpejualan fe = new fpejualan();
+        fe.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+        fpejualan fe = new fpejualan();
+        fe.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
+        fpejualan fe = new fpejualan();
+        fe.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
