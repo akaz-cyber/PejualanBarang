@@ -26,6 +26,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.File;
+import java.awt.Desktop;
+import java.io.IOException;
 
 public class flaporanstokbarang extends javax.swing.JFrame {
 
@@ -47,31 +50,31 @@ public class flaporanstokbarang extends javax.swing.JFrame {
 
         loadData();
     }
-    
-      public final void loadData() {
-    try {
-        Connection c = Koneksi.getKoneksi();
-        Statement s = c.createStatement();
-        String sql = "SELECT * FROM tbl_barang";
-        ResultSet r = s.executeQuery(sql);
-        
-        while (r.next()) {
-            Object[] o = new Object[6];
-            o[0] = r.getString("kd_barang");
-            o[1] = r.getString("nama_barang");
-            o[2] = r.getString("jumlah_barang");
-            o[3] = r.getString("harga_beli");
-            o[4] = r.getString("harga_jual");
-            o[5] = r.getString("tanggal_masuk");
-            model.addRow(o);
+
+    public final void loadData() {
+        try {
+            Connection c = Koneksi.getKoneksi();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM tbl_barang";
+            ResultSet r = s.executeQuery(sql);
+
+            while (r.next()) {
+                Object[] o = new Object[6];
+                o[0] = r.getString("kd_barang");
+                o[1] = r.getString("nama_barang");
+                o[2] = r.getString("jumlah_barang");
+                o[3] = r.getString("harga_beli");
+                o[4] = r.getString("harga_jual");
+                o[5] = r.getString("tanggal_masuk");
+                model.addRow(o);
+            }
+
+            r.close();
+            s.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
-        r.close();
-        s.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -187,7 +190,7 @@ public class flaporanstokbarang extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-           Document document = new Document();
+        Document document = new Document();
         try {
             //  lokasi PDF
             PdfWriter.getInstance(document, new FileOutputStream("F:/laporanstokbarang.pdf"));
@@ -199,16 +202,14 @@ public class flaporanstokbarang extends javax.swing.JFrame {
 
             // Membuat tabel PDF dengan jumlah kolom yang sesuai dengan JTable
             PdfPTable pdfTable = new PdfPTable(model.getColumnCount());
-            
+
             float[] columnWidths = new float[model.getColumnCount()];
             for (int i = 0; i < model.getColumnCount(); i++) {
-                columnWidths[i] = 1f; 
+                columnWidths[i] = 1f;
             }
             pdfTable.setWidths(columnWidths);
             pdfTable.setWidthPercentage(100); // Menetapkan lebar tabel menjadi 100% dari lebar halaman
 
-            
-            
             // Menambahkan header tabel
             for (int i = 0; i < model.getColumnCount(); i++) {
                 PdfPCell cell = new PdfPCell(new Phrase(model.getColumnName(i)));
@@ -228,7 +229,6 @@ public class flaporanstokbarang extends javax.swing.JFrame {
 
             // Menambahkan total ke PDF
             document.add(new Paragraph(" "));
-           
 
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println("Error");
@@ -237,6 +237,31 @@ public class flaporanstokbarang extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "berhasil generate ke PDF", "Aplikasi Penjualan",
                     JOptionPane.INFORMATION_MESSAGE);
             document.close();
+            // Menyimpan lokasi file PDF
+            String filePath = "F:/laporanstokbarang.pdf";
+
+            // Membuat objek File
+            File file = new File(filePath);
+
+            // Mengecek apakah file PDF berhasil dibuat
+            if (file.exists()) {
+                try {
+                    // Membuka file PDF menggunakan aplikasi default
+                    if (Desktop.isDesktopSupported()) {
+                        Desktop.getDesktop().open(file);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Desktop API tidak didukung", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Gagal membuka file PDF", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "File PDF tidak ditemukan", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -24,8 +24,11 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class flaporanpenjualan extends javax.swing.JFrame {
 
@@ -307,6 +310,31 @@ public class flaporanpenjualan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "berhasil generate ke PDF", "Aplikasi Penjualan",
                     JOptionPane.INFORMATION_MESSAGE);
             document.close();
+            // Menyimpan lokasi file PDF
+            String filePath = "F:/laporanpenjualan.pdf";
+
+            // Membuat objek File
+            File file = new File(filePath);
+
+            // Mengecek apakah file PDF berhasil dibuat
+            if (file.exists()) {
+                try {
+                    // Membuka file PDF menggunakan aplikasi default
+                    if (Desktop.isDesktopSupported()) {
+                        Desktop.getDesktop().open(file);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Desktop API tidak didukung", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Gagal membuka file PDF", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "File PDF tidak ditemukan", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
 
         }
 
