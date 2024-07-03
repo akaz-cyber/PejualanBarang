@@ -1,1 +1,1 @@
-export jar di dist folder jika tidak error
+export jar di dist folder jika ada error
