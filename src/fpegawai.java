@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -38,9 +38,9 @@ public class fpegawai extends javax.swing.JFrame {
         model.addColumn("agama");
         model.addColumn("alamat");
 
-        genderGroup = new ButtonGroup(); // Inisialisasi ButtonGroup
-        genderGroup.add(Radiolaki);      // Tambahkan Radiolaki ke ButtonGroup
-        genderGroup.add(Radioperempuan); // Tambahkan Radioperempuan ke ButtonGroup
+        genderGroup = new ButtonGroup(); 
+        genderGroup.add(Radiolaki);     
+        genderGroup.add(Radioperempuan); 
 
         loadData();
 
@@ -372,7 +372,7 @@ public class fpegawai extends javax.swing.JFrame {
                 } else {
                     jenisKelamin = "Perempuan";
                 }
-                int noTelp = Integer.parseInt(fnotelphon.getText());
+                String noTelp = fnotelphon.getText();
                 String agama = cagama.getSelectedItem().toString();
                 String alamat = falamat.getText();
 
@@ -383,7 +383,7 @@ public class fpegawai extends javax.swing.JFrame {
                 p.setString(2, tpassword);
                 p.setString(3, jenisKelamin);
                 p.setString(4, useremail);
-                p.setInt(5, noTelp);
+                p.setString(5, noTelp);
                 p.setString(6, agama);
                 p.setString(7, alamat);
                 p.executeUpdate();
@@ -403,7 +403,7 @@ public class fpegawai extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
 
             } catch (Exception e) {
-                System.out.println("terjadi error");
+                System.out.println(e);
             }
 
         }
